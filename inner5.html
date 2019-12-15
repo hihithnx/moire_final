@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>moire pattern</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  	<link href="https://fonts.googleapis.com/css?family=Cinzel:400,700&display=swap" rel="stylesheet">
+
+
+	<style>
+
+		body{margin:0;background: black; overflow: hidden;}
+		h2{font-family: 'Cinzel', serif; font-weight: 400; margin: 0px; margin-left: -30px; color: white; text-align: center; padding-top: 20px;}
+		a{width:50px; height: 30px; color: white; margin-left: 10px; text-decoration: none; font-size: 16pt; text-align: center;}
+		p{color: white; margin-top: 0px;}
+
+		.sub{text-align: center; margin-left: -40px;}
+
+
+		#head1{width: 100%; height: 100px;  background-color: black; z-index: 9998; position: relative;}
+
+		#container{width:100%; height:100%; position: absolute; left: 0px; top:100px; animation: ro 10s linear infinite; background-image:url(in44.png); background-size: cover; }
+		#container2{width:100%; height:100%; position: absolute; left: 0px; top:100px; background-image:url(in44.png); background-size: cover;   transform:rotate(0deg);
+  -ms-transform:rotate(0deg);
+  -webkit-transform:rotate(0deg);}
+
+		.sq{width:20px; height:20px; margin:5px;background: white;float:left;position: absolute;}
+		.sq2{position: absolute;  }
+
+		.control{position: absolute; z-index: 9999;  left: 10px;}
+
+		#con2{top:40px; background-color: white; color: black;}
+
+
+		.control {
+		  -webkit-appearance: none;
+		  width: 20%;
+		  height: 25px;
+		  background: #d3d3d3;;
+		  outline: none;
+		  opacity: 0.7;
+		  -webkit-transition: .2s;
+		  transition: opacity .2s;
+		}
+
+		.control:hover {
+		  opacity: 1;
+		}
+
+		.control::-webkit-slider-thumb {
+		  -webkit-appearance: none;
+		  appearance: none;
+		  width: 25px;
+		  height: 25px;
+		  background: yellow;
+		  cursor: pointer;
+		}
+
+		.control::-moz-range-thumb {
+		  width: 25px;
+		  height: 25px;
+		  background: #4CAF50;
+		  cursor: pointer;
+		}
+
+
+
+	
+	</style>
+</head>
+<body>
+	<div id="head1">
+		<div>
+			<h2>PLAY OP-ART</h2>
+		</div>
+
+		<div class="sub">
+			<a href="index.html">1</a>
+			<a href="inner2.html">2</a>
+			<a href="inner3.html">3</a>
+			<a href="inner4.html">4</a>
+			<a href="inner5.html">5</a>
+			<a href="inner6.html">6</a>
+			<p>드래그 및 회전하여 원하는 패턴을 만들어보세요</p>
+		</div>
+			
+	</div>
+
+
+
+	<div id="container" ></div>
+	<div id="container2" class="draggable" class="ui-widget-content"></div>
+	<input type = "range" id="con2" class="control" min="-180" max="180"oninput="rotate(this.value)" onchange="rotate(this.value)">
+	<!-- <input type = "range" id="con2" class="control" min="0" max="50"> -->
+	<script>
+
+		// var x = 0;
+		// var y = 0;
+
+		// function moveLeft() {
+		// 	x -= 20;
+		// 	var obj = document.getElementById('sq2');
+		// 	obj.style.left = x + 'px';   // px는 스타일시트 단
+		// }
+
+		// function moveRight() {
+		// 	x += 20;
+		// 	var obj = document.getElementById('sq2');
+		// 	obj.style.left = x + 'px';   // px는 스타일시트 단
+		// }
+
+		// function main() {
+		// var obj_u = document.getElementById('btn_up');
+		// var obj_l = document.getElementById('btn_left');
+		// var obj_r = document.getElementById('btn_right');
+		// var obj_d = document.getElementById('btn_down');
+		// obj_u.addEventListener('click', moveUp, false);
+		// obj_l.addEventListener('click', moveLeft, false);
+		// obj_r.addEventListener('click', moveRight, false);
+		// obj_d.addEventListener('click', moveDown, false);
+		// }
+
+		// for(var i=0; i<25; i++){
+		// 	for(var j=0;j<25;j++){
+		// 		var t = document.createElement("div");
+		// 			t.className = "sq";
+		// 			t.style.top = 35*i + "px";
+		// 			t.style.left = 35*j + "px";
+		// 			container.appendChild(t);
+		// 	}
+		// }
+
+
+
+		// for(var i=0; i<360; i++){
+			
+		// 		var t = document.getElementById("container2")
+		// 			t.className = "sq2";
+					
+		$( function() {
+		    $( ".draggable" ).draggable();
+		  } );		
+					
+			
+		// 	}
+		
+		// con1.oninput = function(){
+		// 	console.log(con1.value);
+		// 	var t = document.getElementsByClassName("sq");
+		// 	for(var i=0;i<t.length;i++){
+		// 		t[i].style.width = con1.value + "px";
+		// 		t[i].style.height = con1.value + "px";
+		// 	}
+		// }
+
+		// con2.oninput = function(){
+		// 	console.log(con1.value);
+		// 	var t = document.getElementsByClassName("sq");
+		// 	for(var i=0;i<t.length;i++){
+		// 		t[i].style.borderRadius = con2.value + "%";
+		// 	}
+		// }
+
+		// 	con2.oninput = function(){
+		// 	console.log(t);
+		// 	var t = document.getElementsByClassName("sq2");
+		// 	for(var i=0; i<t.length; i++){
+		// 		t[i].style.transform = "rotate(10*i+deg)";
+		// 	}
+		// }
+
+		function rotate(value) {
+		  document.getElementById('container2').style.webkitTransform="rotate(" + value + "deg)";
+		  document.getElementById('container2').style.msTransform="rotate("  + "deg)";
+		  document.getElementById('container2').style.MozTransform="rotate(" + "deg)";
+		  document.getElementById('container2').style.OTransform="rotate("  + "deg)";
+		  document.getElementById('container2').style.transform="rotate(" + "deg)";
+		  
+		}
+			</script>
+</body>
+<footer style="color: gray; position: absolute; bottom: 10px; margin-left: 10px;">ⓒ 2019 HKNU.YOHAN LIM</footer>
+</html>
